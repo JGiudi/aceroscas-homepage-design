@@ -119,14 +119,7 @@ const AdvantagesSection = () => {
                 {item.title}
               </h3>
 
-              <motion.div
-                className="h-[2px] bg-primary/40 mb-6"
-                initial={{ width: 32 }}
-                whileHover={{ width: 48 }}
-                transition={{ duration: 0.4 }}
-                style={{ width: 32 }}
-                className="h-[2px] bg-primary/40 mb-6 w-8 group-hover:w-12 transition-all duration-500"
-              />
+              <div className="h-[2px] bg-primary/40 mb-6 w-8 group-hover:w-12 transition-all duration-500" />
 
               <p className="font-body text-muted-foreground leading-relaxed text-sm md:text-base">
                 {item.description}
