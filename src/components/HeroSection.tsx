@@ -1,14 +1,10 @@
-import { useRef } from "react";
+import { useRef, lazy, Suspense } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import geometricPattern from "@/assets/geometric-pattern.png";
-import steelTexture from "@/assets/steel-texture-hero.jpg";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
 import MagneticButton from "./MagneticButton";
 
-const navLinks = [
-  { label: "NOSOTROS", href: "#legado" },
-  { label: "VENTAJAS", href: "#ventajas" },
-  { label: "CONTACTO", href: "#contacto" },
-];
+const SteelTube3D = lazy(() => import("./SteelTube3D"));
 
 // Character-level animation for dramatic text reveal
 const CharReveal = ({
@@ -48,17 +44,20 @@ const HeroSection = () => {
 
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.4, 0.8]);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.55, 0.85]);
 
   return (
     <section ref={sectionRef} className="relative h-screen flex items-center overflow-hidden bg-foreground">
-      {/* Full background image with parallax */}
-      <motion.div className="absolute inset-0" style={{ scale: imageScale, y: imageY }}>
-        <img
-          src={steelTexture}
-          alt=""
+      {/* Video background with parallax */}
+      <motion.div className="absolute inset-0" style={{ scale: videoScale, y: videoY }}>
+        <video
+          src={heroVideo.url}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover"
         />
         <motion.div
@@ -91,7 +90,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Navigation */}
+      {/* Navigation — logo only, hamburger is in FullscreenMenu */}
       <motion.nav
         className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 md:px-16 py-8"
         initial={{ y: -40, opacity: 0 }}
@@ -106,7 +105,11 @@ const HeroSection = () => {
           ACEROSCAS<span className="text-primary">.</span>
         </motion.div>
         <div className="hidden md:flex items-center gap-10 font-body text-sm font-medium tracking-wide text-background/60">
-          {navLinks.map((link, i) => (
+          {[
+            { label: "NOSOTROS", href: "#legado" },
+            { label: "VENTAJAS", href: "#ventajas" },
+            { label: "CONTACTO", href: "#contacto" },
+          ].map((link, i) => (
             <motion.a
               key={link.label}
               href={link.href}
@@ -146,7 +149,7 @@ const HeroSection = () => {
             </span>
           </motion.div>
 
-          {/* Giant title - character reveal */}
+          {/* Giant title */}
           <h1 className="font-display font-800 text-[3.2rem] md:text-[5.5rem] lg:text-[7.5rem] leading-[0.88] tracking-tight text-background mb-8">
             <div className="overflow-hidden">
               <CharReveal text="Tres" delay={0.7} />
@@ -170,7 +173,7 @@ const HeroSection = () => {
             </div>
           </h1>
 
-          {/* Subtitle + CTA row */}
+          {/* Subtitle + CTA */}
           <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
             <motion.p
               className="font-body text-base md:text-lg text-background/50 max-w-md leading-relaxed"
@@ -206,6 +209,18 @@ const HeroSection = () => {
             </motion.div>
           </div>
         </div>
+      </motion.div>
+
+      {/* 3D Steel Tube — right side */}
+      <motion.div
+        className="hidden lg:block absolute right-0 top-0 bottom-0 w-[45%] z-[5]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1.5 }}
+      >
+        <Suspense fallback={null}>
+          <SteelTube3D className="opacity-60" />
+        </Suspense>
       </motion.div>
 
       {/* Right side large number */}
