@@ -8,7 +8,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import HeroV2 from "@/components/v2/HeroV2";
 import ScrollTextReveal from "@/components/v2/ScrollTextReveal";
 import ClipPathReveal from "@/components/v2/ClipPathReveal";
-import TubeShowcase from "@/components/v2/TubeShowcase";
+import ProductShowcase from "@/components/v2/ProductShowcase";
 import TimelineSection from "@/components/v2/TimelineSection";
 import MarqueeText from "@/components/MarqueeText";
 import StatsSection from "@/components/StatsSection";
@@ -44,7 +44,7 @@ const IndexV2 = () => {
               {/* Marquee divider */}
               <div className="bg-background border-y border-border py-5 overflow-hidden">
                 <MarqueeText
-                  texts={["ACERO INOXIDABLE", "BARRAS", "CHAPAS", "TUBOS", "PERFILES", "HIERRO", "DISTRIBUCIÓN NACIONAL"]}
+                  texts={["ACERO MACIZO", "REDONDOS", "CUADRADOS", "HEXAGONALES", "PALANQUILLAS", "TREFILADOS", "LAMINADOS", "FORJADOS"]}
                   className="text-3xl md:text-5xl text-foreground/[0.08]"
                   speed={30}
                 />
@@ -55,8 +55,8 @@ const IndexV2 = () => {
                 <TimelineSection />
               </ClipPathReveal>
 
-              {/* 3D Tube + Products showcase */}
-              <TubeShowcase />
+              {/* Products sticky scroll showcase */}
+              <ProductShowcase />
 
               {/* Stats */}
               <ClipPathReveal direction="top">
@@ -66,7 +66,7 @@ const IndexV2 = () => {
               {/* Marquee */}
               <div className="bg-foreground border-y border-background/10 py-5 overflow-hidden">
                 <MarqueeText
-                  texts={["50 AÑOS", "3 GENERACIONES", "COMPROMISO", "CONFIANZA", "ENTREGAS 24HS"]}
+                  texts={["50 AÑOS", "3 GENERACIONES", "SAE 1010", "SAE 1045", "SAE 4140", "CALIDAD", "CONFIANZA"]}
                   className="text-3xl md:text-5xl text-background/[0.06]"
                   speed={25}
                   direction="right"
