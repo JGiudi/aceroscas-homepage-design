@@ -46,16 +46,13 @@ const HeroV2 = () => {
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8], [0.6, 0.4, 0.8]);
   const videoScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.4]);
 
-  // Scrub video based on scroll
+  // Autoplay video
   useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (v) => {
-      const video = videoRef.current;
-      if (video && video.duration) {
-        video.currentTime = v * video.duration;
-      }
-    });
-    return unsubscribe;
-  }, [scrollYProgress]);
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <div ref={sectionRef} className="relative h-[300vh]">
@@ -68,6 +65,8 @@ const HeroV2 = () => {
             muted
             playsInline
             preload="auto"
+            autoPlay
+            loop
             className="w-full h-full object-cover"
           />
           <motion.div
