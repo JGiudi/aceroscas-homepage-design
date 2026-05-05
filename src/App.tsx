@@ -21,7 +21,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
-          <Route path="/" element={<IndexV4 />} />
+          <Route path="/" element={<IndexV2 />} />
           <Route path="/v1" element={<Index />} />
           <Route path="/v2" element={<IndexV2 />} />
           <Route path="/v3" element={<IndexV3 />} />
