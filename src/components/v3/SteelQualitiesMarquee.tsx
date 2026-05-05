@@ -22,7 +22,7 @@ const SteelQualitiesMarquee = () => {
           >
             {[...qualities, ...qualities].map((q, i) => (
               <div key={`${set}-${i}`} className="flex items-center gap-8 shrink-0">
-                <span className="font-display font-800 text-2xl md:text-4xl text-background/[0.06] whitespace-nowrap select-none">
+                <span className="font-display font-800 text-2xl md:text-4xl text-background/[0.14] whitespace-nowrap select-none">
                   {q}
                 </span>
                 <span className="w-2 h-2 bg-primary/20 rotate-45 shrink-0" />

@@ -1,6 +1,6 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
+import industrialBg from "@/assets/industrial-hero-v3.png";
 import geometricPattern from "@/assets/geometric-pattern.png";
 import MagneticButton from "@/components/MagneticButton";
 
@@ -22,8 +22,8 @@ const CharReveal = ({
         animate={{ y: 0, rotateX: 0 }}
         transition={{
           duration: 0.8,
-          ease: [0.16, 1, 0.3, 1], // Smoother easing
-          delay: delay + i * 0.035, // Slightly slower stagger
+          ease: [0.16, 1, 0.3, 1],
+          delay: delay + i * 0.035,
         }}
       >
         {char === " " ? "\u00A0" : char}
@@ -32,9 +32,8 @@ const CharReveal = ({
   </span>
 );
 
-const HeroV2 = () => {
+const HeroV4 = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -45,21 +44,21 @@ const HeroV2 = () => {
   const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8], [0.6, 0.4, 0.8]);
   const videoScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.4]);
-
-  // Autoplay video
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.play().catch(() => {});
-    }
-  }, []);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
     <div ref={sectionRef} className="relative h-[300vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-foreground">
-        {/* Video background — scrubbed by scroll */}
-        <motion.div className="absolute inset-0" style={{ scale: videoScale }}>
-          <div className="w-full h-full bg-[#0a0a0a]" />
+        {/* Industrial Background Image with Parallax */}
+        <motion.div 
+          className="absolute inset-0" 
+          style={{ scale: videoScale, y: bgY }}
+        >
+          <img
+            src={industrialBg}
+            alt="AcerosCas Industrial"
+            className="w-full h-full object-cover grayscale brightness-50"
+          />
           <motion.div
             className="absolute inset-0 bg-foreground"
             style={{ opacity: overlayOpacity }}
@@ -135,12 +134,6 @@ const HeroV2 = () => {
               <div className="overflow-hidden text-primary"><CharReveal text="forjando" delay={1.05} /></div>
               <div className="overflow-hidden">
                 <CharReveal text="la industria" delay={1.2} />
-                <motion.span
-                  className="text-primary inline-block ml-1"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 1.8, type: "spring", stiffness: 300 }}
-                >.</motion.span>
               </div>
             </h1>
 
@@ -204,24 +197,19 @@ const HeroV2 = () => {
           </p>
         </motion.div>
 
-        {/* Large "50" */}
-        <div className="hidden lg:flex absolute right-16 bottom-20 z-10 flex-col items-end">
-          <motion.div
-            className="font-display font-800 text-[14rem] leading-none text-background/[0.04] select-none"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1], delay: 1.8 }}
-          >50</motion.div>
-          <motion.p
-            className="font-body text-xs tracking-[0.3em] text-background/20 -mt-8 mr-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.2, duration: 0.8 }}
-          >AÑOS</motion.p>
+        {/* Large "ACEROSCAS" background text */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
+          <motion.span 
+            className="font-display font-800 text-[10vw] md:text-[15vw] text-background leading-none select-none uppercase"
+            style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]) }}
+          >
+            ACEROSCAS
+          </motion.span>
         </div>
       </div>
     </div>
   );
 };
 
-export default HeroV2;
+export default HeroV4;
+

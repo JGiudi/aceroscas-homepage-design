@@ -1,43 +1,56 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import MagneticButton from "./MagneticButton";
 
 const menuLinks = [
-  { label: "Nosotros", href: "#legado", num: "01" },
-  { label: "Ventajas", href: "#ventajas", num: "02" },
-  { label: "Contacto", href: "#contacto", num: "03" },
+  { label: "Inicio", href: "/", num: "01" },
+  { label: "Productos", href: "/productos", num: "02" },
+  { label: "Contacto", href: "/contacto", num: "03" },
 ];
 
 const FullscreenMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
-
   return (
     <>
       {/* Hamburger button */}
-      <button
-        onClick={toggle}
-        className="fixed top-8 right-8 md:right-16 z-[60] w-14 h-14 flex items-center justify-center group"
-        aria-label="Menu"
-      >
-        <div className="relative w-8 h-5 flex flex-col justify-between">
-          <motion.span
-            className="block h-[2px] bg-background origin-left"
-            animate={isOpen ? { rotate: 45, y: -2, width: "120%" } : { rotate: 0, y: 0, width: "100%" }}
-            transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
-          />
-          <motion.span
-            className="block h-[2px] bg-background origin-center"
-            animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
-          />
-          <motion.span
-            className="block h-[2px] bg-background origin-left"
-            animate={isOpen ? { rotate: -45, y: 2, width: "120%" } : { rotate: 0, y: 0, width: "60%" }}
-            transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
-          />
-        </div>
-      </button>
+    <motion.button
+      className="fixed top-8 right-8 md:right-16 z-[60] w-14 h-14 flex items-center justify-center group mix-blend-difference"
+      onClick={() => setIsOpen(!isOpen)}
+      whileHover="hover"
+      initial={false}
+      animate={isOpen ? "open" : "closed"}
+    >
+      <div className="relative w-8 h-5 flex flex-col justify-between pointer-events-none">
+        <motion.span
+          className="block h-[2px] bg-white origin-left"
+          variants={{
+            closed: { rotate: 0, y: 0, width: "100%" },
+            open: { rotate: 45, y: -2, width: "120%" },
+            hover: { width: "120%", x: -2 }
+          }}
+          transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
+        />
+        <motion.span
+          className="block h-[2px] bg-white origin-center"
+          variants={{
+            closed: { opacity: 1, scaleX: 1 },
+            open: { opacity: 0, scaleX: 0 },
+            hover: { scaleX: 1.2 }
+          }}
+          transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
+        />
+        <motion.span
+          className="block h-[2px] bg-white origin-left"
+          variants={{
+            closed: { rotate: 0, y: 0, width: "60%" },
+            open: { rotate: -45, y: 2, width: "120%" },
+            hover: { width: "100%" }
+          }}
+          transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
+        />
+      </div>
+    </motion.button>
 
       {/* Fullscreen overlay */}
       <AnimatePresence>

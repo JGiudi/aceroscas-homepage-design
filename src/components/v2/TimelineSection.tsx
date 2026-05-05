@@ -96,7 +96,7 @@ const TimelineSection = () => {
                 <motion.div
                   key={event.year}
                   className={`relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ${
-                    isLeft ? "" : "md:direction-rtl"
+                    isLeft ? "" : "md:flex-row-reverse"
                   }`}
                   initial={{ opacity: 0, y: 80 }}
                   whileInView={{ opacity: 1, y: 0 }}

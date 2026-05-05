@@ -37,12 +37,12 @@ const MagneticButton = ({ children, className = "", href, onClick }: Props) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
-      className="inline-block"
+      className={`inline-block ${className}`}
     >
       <Tag
         href={href}
         onClick={onClick}
-        className={className}
+        className="w-full h-full block"
       >
         {children}
       </Tag>

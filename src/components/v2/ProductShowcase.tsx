@@ -48,8 +48,10 @@ const ProductShowcase = () => {
   // Map scroll progress to active product index
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (v) => {
-      const idx = Math.min(Math.floor(v * products.length), products.length - 1);
-      setActiveIndex(Math.max(0, idx));
+      // Use a more centered threshold for index switching
+      const segment = 1 / products.length;
+      const idx = Math.floor((v + segment / 2) / segment);
+      setActiveIndex(Math.min(Math.max(0, idx), products.length - 1));
     });
     return unsubscribe;
   }, [scrollYProgress]);
@@ -101,7 +103,7 @@ const ProductShowcase = () => {
           <div className="flex items-center py-12 lg:py-0 px-8 md:px-16 lg:px-20 bg-foreground">
             <div className="max-w-lg w-full">
               <motion.div
-                className="flex items-center gap-4 mb-8"
+                className="flex items-center gap-4 mb-4"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -114,7 +116,7 @@ const ProductShowcase = () => {
               </motion.div>
 
               <motion.h2
-                className="font-display font-800 text-4xl md:text-5xl lg:text-6xl leading-[0.92] tracking-tight text-background mb-12"
+                className="font-display font-800 text-3xl md:text-4xl lg:text-5xl leading-[0.92] tracking-tight text-background mb-6"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -135,7 +137,7 @@ const ProductShowcase = () => {
                   return (
                     <motion.div
                       key={product.id}
-                      className={`group border-b border-background/10 py-5 cursor-pointer transition-all duration-500 ${
+                      className={`group border-b border-background/10 py-3 cursor-pointer transition-all duration-500 ${
                         isActive ? "pl-4 border-l-2 border-l-primary" : "pl-0 border-l-2 border-l-transparent"
                       }`}
                       initial={{ opacity: 0, x: -20 }}

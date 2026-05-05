@@ -29,11 +29,23 @@ const words = [
   { text: "moderna.", highlight: true },
 ];
 
+const wordCount = words.length;
+
 const ScrollTextReveal = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.8", "end 0.2"],
+    offset: ["start end", "end start"],
+  });
+
+  // Progreso 0→1 del scroll “de sección” mapeado a un tramo más corto (lo→hi) para que
+  // el reveal termine ANTES de que scrollYProgress llegue a 1 (a veces no lo hace del todo).
+  const revealProgress = useTransform(scrollYProgress, (v) => {
+    const lo = 0.16;
+    const hi = 0.58;
+    if (v <= lo) return 0;
+    if (v >= hi) return 1;
+    return (v - lo) / (hi - lo);
   });
 
   return (
@@ -69,13 +81,16 @@ const ScrollTextReveal = () => {
         {/* Word-by-word reveal */}
         <p className="font-display font-800 text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight max-w-6xl">
           {words.map((word, i) => {
-            const start = i / words.length;
-            const end = (i + 1) / words.length;
+            const start = i / wordCount;
+            const end = (i + 1) / wordCount;
 
-            return <Word key={i} word={word} progress={scrollYProgress} start={start} end={end} />;
+            return <Word key={i} word={word} progress={revealProgress} start={start} end={end} />;
           })}
         </p>
       </div>
+
+      {/* Aumenta la altura de la sección para que haya recorrido de scroll real hacia scrollYProgress ≈ 1 */}
+      <div className="pointer-events-none h-[85vh] min-h-[480px] w-full shrink-0" aria-hidden />
     </section>
   );
 };
@@ -91,8 +106,8 @@ const Word = ({
   start: number;
   end: number;
 }) => {
-  const opacity = useTransform(progress, [start, end], [0.12, 1]);
-  const y = useTransform(progress, [start, end], [8, 0]);
+  const opacity = useTransform(progress, [start, end], [0.22, 1], { clamp: true });
+  const y = useTransform(progress, [start, end], [10, 0], { clamp: true });
 
   return (
     <motion.span
