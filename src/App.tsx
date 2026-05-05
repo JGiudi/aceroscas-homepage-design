@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import IndexV2 from "./pages/IndexV2.tsx";
 import IndexV3 from "./pages/IndexV3.tsx";
 import IndexV4 from "./pages/IndexV4.tsx";
+import IndexV5 from "./pages/IndexV5.tsx";
 import Contact from "./pages/Contact.tsx";
 import Products from "./pages/Products.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/v2" element={<IndexV2 />} />
           <Route path="/v3" element={<IndexV3 />} />
           <Route path="/v4" element={<IndexV4 />} />
+          <Route path="/v5" element={<IndexV5 />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/productos" element={<Products />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
