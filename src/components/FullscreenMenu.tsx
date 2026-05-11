@@ -138,21 +138,27 @@ const FullscreenMenu = () => {
                 >
                   <div className="space-y-8">
                     <div>
-                      <p className="font-body text-xs tracking-[0.3em] uppercase text-background/30 mb-3">Email</p>
+                      <p className="font-body text-xs tracking-[0.3em] uppercase text-background/30 mb-3">Ventas</p>
+                      <a href="mailto:franco@aceroscas.com.ar" className="font-body text-lg text-background/60 hover:text-primary transition-colors">
+                        franco@aceroscas.com.ar
+                      </a>
+                    </div>
+                    <div>
+                      <p className="font-body text-xs tracking-[0.3em] uppercase text-background/30 mb-3">Info</p>
                       <a href="mailto:info@aceroscas.com.ar" className="font-body text-lg text-background/60 hover:text-primary transition-colors">
                         info@aceroscas.com.ar
                       </a>
                     </div>
                     <div>
-                      <p className="font-body text-xs tracking-[0.3em] uppercase text-background/30 mb-3">Teléfono</p>
-                      <a href="tel:+541140000000" className="font-body text-lg text-background/60 hover:text-primary transition-colors">
-                        +54 11 4000-0000
+                      <p className="font-body text-xs tracking-[0.3em] uppercase text-background/30 mb-3">WhatsApp</p>
+                      <a href="https://wa.me/5491158392680" target="_blank" rel="noopener noreferrer" className="font-body text-lg text-background/60 hover:text-primary transition-colors">
+                        +54 11 5839-2680
                       </a>
                     </div>
                     <div>
                       <p className="font-body text-xs tracking-[0.3em] uppercase text-background/30 mb-3">Ubicación</p>
                       <p className="font-body text-lg text-background/60">
-                        Buenos Aires, Argentina
+                        Ciudad Autónoma de Buenos Aires
                       </p>
                     </div>
                   </div>

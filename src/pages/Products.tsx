@@ -5,7 +5,7 @@ import CustomCursor from "@/components/CustomCursor";
 import FilmGrain from "@/components/FilmGrain";
 import SmoothScroll from "@/components/SmoothScroll";
 import MagneticButton from "@/components/MagneticButton";
-import FooterSection from "@/components/FooterSection";
+import FooterSection from "@/components/v6/FooterSection";
 import { ChevronRight, Download } from "lucide-react";
 
 const productCategories = [

@@ -5,7 +5,7 @@ import CustomCursor from "@/components/CustomCursor";
 import FilmGrain from "@/components/FilmGrain";
 import SmoothScroll from "@/components/SmoothScroll";
 import MagneticButton from "@/components/MagneticButton";
-import FooterSection from "@/components/FooterSection";
+import FooterSection from "@/components/v6/FooterSection";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -46,33 +46,39 @@ const Contact = () => {
                 </div>
                 
                 <h1 className="font-display font-800 text-5xl md:text-7xl lg:text-8xl leading-[0.92] tracking-tight text-foreground mb-12">
-                  Hablemos de su<br />
-                  <span className="text-primary">próximo</span> proyecto<span className="text-primary">.</span>
+                  Hablemos de tu<br />
+                  <span className="text-primary">próximo</span> pedido<span className="text-primary">.</span>
                 </h1>
 
                 <p className="font-body text-lg text-muted-foreground max-w-md mb-16 leading-relaxed">
-                  Trato directo de dueño a dueño. Cuéntenos sus necesidades y le responderemos con la celeridad que su industria exige.
+                  Trato directo de dueño a dueño. Contanos tus necesidades y te respondemos con la velocidad que tu industria exige.
                 </p>
 
                 <div className="space-y-10">
                   <div>
-                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Email de Ventas</p>
-                    <a href="mailto:ventas@aceroscas.com.ar" className="font-display font-600 text-2xl hover:text-primary transition-colors">
-                      ventas@aceroscas.com.ar
+                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Ventas</p>
+                    <a href="mailto:franco@aceroscas.com.ar" className="font-display font-600 text-2xl hover:text-primary transition-colors">
+                      franco@aceroscas.com.ar
                     </a>
                   </div>
                   <div>
-                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Oficina Central</p>
-                    <p className="font-display font-600 text-2xl">
-                      Barracas, Buenos Aires<br />
-                      Argentina
-                    </p>
+                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Info</p>
+                    <a href="mailto:info@aceroscas.com.ar" className="font-display font-600 text-2xl hover:text-primary transition-colors">
+                      info@aceroscas.com.ar
+                    </a>
                   </div>
                   <div>
-                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">WhatsApp Directo</p>
-                    <a href="tel:+541158392680" className="font-display font-600 text-2xl hover:text-primary transition-colors">
+                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">WhatsApp</p>
+                    <a href="https://wa.me/5491158392680" target="_blank" rel="noopener noreferrer" className="font-display font-600 text-2xl hover:text-primary transition-colors">
                       +54 11 5839-2680
                     </a>
+                  </div>
+                  <div>
+                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Ubicación</p>
+                    <p className="font-display font-600 text-2xl">
+                      Ciudad Autónoma<br />
+                      de Buenos Aires
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -120,19 +126,19 @@ const Contact = () => {
                     <input 
                       type="text" 
                       className="w-full bg-transparent border-b border-muted-foreground/20 py-3 focus:outline-none focus:border-primary transition-colors font-body"
-                      placeholder="Nombre de su organización"
+                      placeholder="Nombre de tu organización"
                       onChange={(e) => setFormData({...formData, empresa: e.target.value})}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">Su Mensaje</label>
+                    <label className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">Tu Mensaje</label>
                     <textarea 
                       required
                       rows={4}
                       data-cursor="Mensaje"
                       className="w-full bg-transparent border-b border-muted-foreground/20 py-3 focus:outline-none focus:border-primary transition-colors font-body resize-none"
-                      placeholder="¿En qué podemos ayudarle?"
+                      placeholder="¿En qué podemos ayudarte?"
                       onChange={(e) => setFormData({...formData, mensaje: e.target.value})}
                     />
                   </div>
@@ -148,7 +154,7 @@ const Contact = () => {
                   </div>
 
                   <p className="font-body text-[10px] text-muted-foreground/60 text-center">
-                    Al enviar este formulario, usted acepta nuestra política de privacidad y el trato directo de datos.
+                    Al enviar este formulario, aceptás nuestra política de privacidad y el trato directo de datos.
                   </p>
                 </form>
               </motion.div>
