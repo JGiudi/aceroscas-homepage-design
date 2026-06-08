@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import FullscreenMenu from "@/components/FullscreenMenu";
 import CustomCursor from "@/components/CustomCursor";
 import FilmGrain from "@/components/FilmGrain";
@@ -14,8 +15,8 @@ const productCategories = [
     title: "Aceros al Carbono",
     description: "La base de la industria. Versatilidad y resistencia para aplicaciones generales.",
     items: [
-      { quality: "SAE 1010/20", detail: "Bajo Carbono", sizes: "Ø 6mm a 300mm", profiles: ["redondo", "cuadrado", "planchuela"] },
-      { quality: "SAE 1040/45", detail: "Medio Carbono", sizes: "Ø 12mm a 500mm", profiles: ["redondo", "cuadrado", "hexagonal"] },
+      { quality: "SAE 1010/1026", detail: "Bajo Carbono", sizes: "Ø 3mm a 500mm", profiles: ["redondo", "cuadrado", "planchuela"] },
+      { quality: "SAE 1040/1045", detail: "Medio Carbono", sizes: "Ø 3mm a 700mm", profiles: ["redondo", "cuadrado", "hexagonal", "planchuela"] },
     ]
   },
   {
@@ -23,9 +24,18 @@ const productCategories = [
     title: "Construcción Mecánica",
     description: "Aceros aleados para piezas de alta exigencia, fatiga y tracción.",
     items: [
-      { quality: "SAE 4140", detail: "Cromo-Molibdeno", sizes: "Ø 16mm a 400mm", profiles: ["redondo", "cuadrado"] },
-      { quality: "SAE 4340", detail: "Níquel-Cromo-Molibdeno", sizes: "Ø 20mm a 350mm", profiles: ["redondo"] },
-      { quality: "SAE 5115", detail: "Cromo", sizes: "Ø 10mm a 250mm", profiles: ["redondo"] },
+      { quality: "SAE 4140", detail: "Cromo-Molibdeno", sizes: "Ø 12,7mm a 700mm", profiles: ["redondo", "cuadrado", "planchuela"] },
+      { quality: "SAE 4140 Bonificado", detail: "Bonificado (Q&T)", sizes: "Ø 12,7mm a 700mm", profiles: ["redondo", "cuadrado", "planchuela"] },
+      { quality: "SAE 4340", detail: "Níquel-Cromo-Molibdeno", sizes: "Ø 95mm a 500mm", profiles: ["redondo"] },
+      { quality: "SAE 4130", detail: "Cromo-Molibdeno", sizes: "Ø 95mm a 500mm", profiles: ["redondo"] },
+    ]
+  },
+  {
+    id: "cementacion",
+    title: "Aceros para Cementación",
+    description: "Para piezas que requieren gran dureza superficial y núcleo tenaz.",
+    items: [
+      { quality: "SAE 8620", detail: "Níquel-Cromo-Molibdeno", sizes: "Ø 12,7mm a 700mm", profiles: ["redondo", "planchuela"] },
     ]
   },
   {
@@ -36,15 +46,6 @@ const productCategories = [
       { quality: "AISI 304/304L", detail: "Austenítico", sizes: "Ø 3mm a 300mm", profiles: ["redondo", "cuadrado", "hexagonal", "planchuela"] },
       { quality: "AISI 316/316L", detail: "Alta Corrosión", sizes: "Ø 6mm a 250mm", profiles: ["redondo", "planchuela"] },
       { quality: "AISI 410/420", detail: "Martensítico", sizes: "Ø 8mm a 200mm", profiles: ["redondo"] },
-    ]
-  },
-  {
-    id: "cementacion",
-    title: "Aceros para Cementación",
-    description: "Para piezas que requieren gran dureza superficial y núcleo tenaz.",
-    items: [
-      { quality: "SAE 8620", detail: "Níquel-Cromo-Molibdeno", sizes: "Ø 16mm a 300mm", profiles: ["redondo"] },
-      { quality: "SAE 3310", detail: "Níquel-Cromo", sizes: "Ø 20mm a 250mm", profiles: ["redondo"] },
     ]
   },
   {
@@ -71,6 +72,7 @@ const productCategories = [
     description: "Terminación superficial superior para precisión dimensional.",
     items: [
       { quality: "1018/1045", detail: "Barras de Precisión", sizes: "Ø 3mm a 100mm", profiles: ["redondo", "cuadrado", "hexagonal"] },
+      { quality: "SAE 4140", detail: "Cromo-Molibdeno", sizes: "Ø 3mm a 100mm", profiles: ["redondo", "cuadrado"] },
     ]
   },
   {
@@ -92,9 +94,16 @@ const Products = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Catálogo de Aceros Especiales | ACEROSCAS Buenos Aires</title>
+        <meta name="description" content="Catálogo completo de aceros especiales: Aceros al Carbono, Construcción Mecánica (SAE 4140, 4340), Inoxidables, Cementación, Herramientas, Acero Rápido, Calibrados. Distribución en Buenos Aires." />
+        <meta property="og:title" content="Catálogo de Aceros Especiales | ACEROSCAS" />
+        <meta property="og:description" content="SAE 1010 a SAE 52100. Redondos, cuadrados, hexagonales, palanquillas y planchuelas. Stock permanente en Buenos Aires." />
+        <link rel="canonical" href="https://aceroscas.com.ar/productos" />
+      </Helmet>
       <CustomCursor />
       <FilmGrain />
-      <FullscreenMenu />
+      <FullscreenMenu homeHref="/v8" />
       
       <SmoothScroll>
         <main className="bg-background min-h-screen pt-32 pb-20">
@@ -147,7 +156,7 @@ const Products = () => {
             </motion.div>
 
             {/* Product Grid */}
-            <div className="space-y-32">
+            <div className="space-y-16 md:space-y-32">
               <AnimatePresence mode="popLayout">
                 {filteredCategories.map((category, catIdx) => (
                   <motion.section 
@@ -181,42 +190,75 @@ const Products = () => {
 
                       {/* Technical Table */}
                       <div className="lg:col-span-2 bg-zinc-100/50 rounded-sm border border-foreground/[0.03] overflow-hidden">
-                        <div className="grid grid-cols-4 bg-foreground/[0.02] border-b border-foreground/[0.05] px-6 py-4">
-                          <span className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">Calidad</span>
-                          <span className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">Detalle</span>
-                          <span className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">Medidas</span>
-                          <span className="font-body text-[10px] tracking-widest uppercase text-muted-foreground text-right">Perfiles</span>
-                        </div>
-                        
-                        <div className="divide-y divide-foreground/[0.05]">
+
+                        {/* Mobile: cards */}
+                        <div className="divide-y divide-foreground/[0.05] lg:hidden">
                           {category.items.map((item, itemIdx) => (
-                            <motion.div 
-                              key={itemIdx}
-                              whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-                              className="grid grid-cols-4 px-6 py-6 items-center group cursor-default"
-                            >
-                              <span className="font-display font-700 text-lg md:text-xl text-foreground group-hover:text-primary transition-colors">
-                                {item.quality}
-                              </span>
-                              <span className="font-body text-sm text-muted-foreground">
-                                {item.detail}
-                              </span>
-                              <span className="font-body text-sm font-medium">
-                                {item.sizes}
-                              </span>
-                              <div className="flex justify-end gap-2">
+                            <div key={itemIdx} className="px-5 py-4 flex items-start justify-between gap-3">
+                              <div className="min-w-0">
+                                <span className="font-display font-700 text-base text-foreground block leading-tight">
+                                  {item.quality}
+                                </span>
+                                <span className="font-body text-xs text-muted-foreground block mt-0.5">
+                                  {item.detail}
+                                </span>
+                                <span className="font-body text-xs font-medium text-foreground/60 block mt-1">
+                                  {item.sizes}
+                                </span>
+                              </div>
+                              <div className="flex gap-1.5 flex-shrink-0 mt-0.5">
                                 {item.profiles.map(p => (
                                   <div key={p} className="w-6 h-6 border border-primary/20 rounded-sm flex items-center justify-center bg-white shadow-sm" title={p}>
-                                     {p === "redondo" && <div className="w-3 h-3 rounded-full bg-primary" />}
-                                     {p === "cuadrado" && <div className="w-3 h-3 bg-primary" />}
-                                     {p === "hexagonal" && <div className="w-3 h-3 bg-primary" style={{ clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)" }} />}
-                                     {p === "planchuela" && <div className="w-4 h-1.5 bg-primary" />}
+                                    {p === "redondo" && <div className="w-3 h-3 rounded-full bg-primary" />}
+                                    {p === "cuadrado" && <div className="w-3 h-3 bg-primary" />}
+                                    {p === "hexagonal" && <div className="w-3 h-3 bg-primary" style={{ clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)" }} />}
+                                    {p === "planchuela" && <div className="w-4 h-1.5 bg-primary" />}
                                   </div>
                                 ))}
                               </div>
-                            </motion.div>
+                            </div>
                           ))}
                         </div>
+
+                        {/* Desktop: table */}
+                        <div className="hidden lg:block">
+                          <div className="grid grid-cols-4 bg-foreground/[0.02] border-b border-foreground/[0.05] px-6 py-4">
+                            <span className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">Calidad</span>
+                            <span className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">Detalle</span>
+                            <span className="font-body text-[10px] tracking-widest uppercase text-muted-foreground">Medidas</span>
+                            <span className="font-body text-[10px] tracking-widest uppercase text-muted-foreground text-right">Perfiles</span>
+                          </div>
+                          <div className="divide-y divide-foreground/[0.05]">
+                            {category.items.map((item, itemIdx) => (
+                              <motion.div
+                                key={itemIdx}
+                                whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
+                                className="grid grid-cols-4 px-6 py-6 items-center group cursor-default"
+                              >
+                                <span className="font-display font-700 text-lg md:text-xl text-foreground group-hover:text-primary transition-colors">
+                                  {item.quality}
+                                </span>
+                                <span className="font-body text-sm text-muted-foreground">
+                                  {item.detail}
+                                </span>
+                                <span className="font-body text-sm font-medium">
+                                  {item.sizes}
+                                </span>
+                                <div className="flex justify-end gap-2">
+                                  {item.profiles.map(p => (
+                                    <div key={p} className="w-6 h-6 border border-primary/20 rounded-sm flex items-center justify-center bg-white shadow-sm" title={p}>
+                                      {p === "redondo" && <div className="w-3 h-3 rounded-full bg-primary" />}
+                                      {p === "cuadrado" && <div className="w-3 h-3 bg-primary" />}
+                                      {p === "hexagonal" && <div className="w-3 h-3 bg-primary" style={{ clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)" }} />}
+                                      {p === "planchuela" && <div className="w-4 h-1.5 bg-primary" />}
+                                    </div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </motion.section>

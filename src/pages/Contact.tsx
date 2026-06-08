@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import FullscreenMenu from "@/components/FullscreenMenu";
 import CustomCursor from "@/components/CustomCursor";
 import FilmGrain from "@/components/FilmGrain";
@@ -23,9 +24,16 @@ const Contact = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Contacto | ACEROSCAS — Distribuidores de Acero Buenos Aires</title>
+        <meta name="description" content="Contactate con ACEROSCAS para cotizaciones de acero especial. Atención personalizada, respuesta en 24hs. Email: franco@aceroscas.com.ar | WhatsApp: +54 11 5839-2680." />
+        <meta property="og:title" content="Contacto | ACEROSCAS" />
+        <meta property="og:description" content="Solicitá tu cotización de acero especial. Respuesta en 24hs, atención directa sin intermediarios." />
+        <link rel="canonical" href="https://aceroscas.com.ar/contacto" />
+      </Helmet>
       <CustomCursor />
       <FilmGrain />
-      <FullscreenMenu />
+      <FullscreenMenu homeHref="/v8" />
       
       <SmoothScroll>
         <main className="bg-background min-h-screen pt-32 pb-20">
@@ -146,9 +154,9 @@ const Contact = () => {
                   <div className="pt-6">
                     <MagneticButton
                       data-cursor="Enviar"
-                      className="w-full bg-foreground text-background font-body font-bold text-xs tracking-[0.2em] py-5 transition-all hover:bg-primary group overflow-hidden relative"
+                      className="w-full bg-foreground text-background font-body font-bold text-xs tracking-[0.2em] py-5 px-8 text-center transition-all hover:bg-primary group overflow-hidden relative"
                     >
-                      <span className="relative z-10">ENVIAR CONSULTA</span>
+                      <span className="relative z-10">ENVIAR</span>
                       <div className="absolute inset-0 bg-primary scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500" />
                     </MagneticButton>
                   </div>

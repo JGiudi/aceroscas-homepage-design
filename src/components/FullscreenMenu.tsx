@@ -2,13 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 
-const menuLinks = [
-  { label: "Inicio", href: "/", num: "01" },
-  { label: "Productos", href: "/productos", num: "02" },
-  { label: "Contacto", href: "/contacto", num: "03" },
-];
-
-const FullscreenMenu = () => {
+const FullscreenMenu = ({ homeHref = "/" }: { homeHref?: string }) => {
+  const menuLinks = [
+    { label: "Inicio", href: homeHref, num: "01" },
+    { label: "Productos", href: "/productos", num: "02" },
+    { label: "Contacto", href: "/contacto", num: "03" },
+  ];
   const [isOpen, setIsOpen] = useState(false);
 
   return (

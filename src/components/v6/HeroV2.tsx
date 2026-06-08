@@ -131,7 +131,8 @@ const HeroV2 = () => {
               </span>
             </motion.div>
 
-            <h1 className="font-display font-800 text-[3.2rem] md:text-[5.5rem] lg:text-[7.5rem] leading-[0.92] tracking-tight text-background mb-8">
+            <h1 className="sr-only">ACEROSCAS — Distribuidores de Acero Especial en Buenos Aires</h1>
+            <div aria-hidden="true" className="font-display font-800 text-[3.2rem] md:text-[5.5rem] lg:text-[7.5rem] leading-[0.92] tracking-tight text-background mb-8">
               <div className="overflow-hidden"><CharReveal text="Tres" delay={0.7} /></div>
               <div className="overflow-hidden"><CharReveal text="generaciones" delay={0.85} /></div>
               <div className="overflow-hidden text-primary"><CharReveal text="forjando" delay={1.05} /></div>
@@ -144,7 +145,7 @@ const HeroV2 = () => {
                   transition={{ duration: 0.4, delay: 1.8, type: "spring", stiffness: 300 }}
                 >.</motion.span>
               </div>
-            </h1>
+            </div>
 
             <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-16">
               <motion.p

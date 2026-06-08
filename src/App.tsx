@@ -10,6 +10,7 @@ import IndexV4 from "./pages/IndexV4.tsx";
 import IndexV5 from "./pages/IndexV5.tsx";
 import IndexV6 from "./pages/IndexV6.tsx";
 import IndexV7 from "./pages/IndexV7.tsx";
+import IndexV8 from "./pages/IndexV8.tsx";
 import Experiments from "./pages/Experiments.tsx";
 import Contact from "./pages/Contact.tsx";
 import Products from "./pages/Products.tsx";
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/v5" element={<IndexV5 />} />
           <Route path="/v6" element={<IndexV6 />} />
           <Route path="/v7" element={<IndexV7 />} />
+          <Route path="/v8" element={<IndexV8 />} />
           <Route path="/experiments" element={<Experiments />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/productos" element={<Products />} />

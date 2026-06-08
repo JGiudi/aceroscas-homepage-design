@@ -410,9 +410,10 @@ const shapeComponents: Record<string, React.FC> = {
 interface SteelShapes3DProps {
   activeShape: string;
   className?: string;
+  showReflection?: boolean;
 }
 
-const SteelShapes3D = ({ activeShape, className = "" }: SteelShapes3DProps) => {
+const SteelShapes3D = ({ activeShape, className = "", showReflection = true }: SteelShapes3DProps) => {
   const ShapeComponent = shapeComponents[activeShape] || RoundBar;
 
   return (
@@ -435,8 +436,12 @@ const SteelShapes3D = ({ activeShape, className = "" }: SteelShapes3DProps) => {
 
         <Suspense fallback={null}>
           <ShapeComponent />
-          <ContactShadows position={[0, -3.2, 0]} opacity={0.3} scale={8} blur={2.5} far={4} />
-          <Environment preset="city" />
+          {showReflection && (
+            <>
+              <ContactShadows position={[0, -3.2, 0]} opacity={0.3} scale={8} blur={2.5} far={4} />
+              <Environment preset="city" />
+            </>
+          )}
         </Suspense>
 
         <Sparks />

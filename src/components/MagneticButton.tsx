@@ -31,18 +31,20 @@ const MagneticButton = ({ children, className = "", href, onClick }: Props) => {
 
   const Tag = href ? "a" : "button";
 
+  const fullWidth = className.includes("w-full");
+
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
-      className={`inline-block ${className}`}
+      className={fullWidth ? "block w-full" : "inline-block"}
     >
       <Tag
         href={href}
         onClick={onClick}
-        className="w-full h-full block"
+        className={`block ${className}`}
       >
         {children}
       </Tag>

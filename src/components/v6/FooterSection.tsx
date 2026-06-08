@@ -30,8 +30,8 @@ const contactItems = [
   {
     label: "Ubicación",
     value: "Ciudad Autónoma\nde Buenos Aires",
-    sub: "Dirección próximamente",
-    href: null,
+    sub: "Ver en Google Maps",
+    href: "https://maps.app.goo.gl/LMUym3N835iDwUqYA?g_st=iwb",
   },
 ];
 
@@ -41,7 +41,7 @@ const FooterSection = () => {
       {/* Top marquee band */}
       <div className="border-t border-b border-background/10 py-6 overflow-hidden">
         <MarqueeText
-          texts={["HABLEMOS", "DE TU PRÓXIMO PEDIDO", "CONTACTANOS", "ACEROSCAS"]}
+          texts={["HABLEMOS", "DE TU PRÓXIMA COTIZACIÓN", "CONTACTANOS", "ACEROSCAS"]}
           className="text-5xl md:text-7xl lg:text-8xl text-background/[0.06]"
           speed={25}
         />
@@ -73,7 +73,7 @@ const FooterSection = () => {
           >
             Hablemos de tu
             <br />
-            próximo pedido
+            próxima cotización
             <span className="text-primary">.</span>
           </motion.h2>
 
@@ -149,40 +149,36 @@ const FooterSection = () => {
           ))}
         </div>
 
-        {/* Map placeholder */}
+        {/* Map embed */}
         <motion.div
-          className="border border-background/10 h-48 md:h-64 flex items-center justify-center mb-20 relative overflow-hidden"
+          className="mb-20 relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="text-center">
-            <p className="font-body text-xs tracking-[0.3em] uppercase text-background/20 mb-3">
-              Ubicación
-            </p>
-            <a
-              href="https://maps.google.com/?q=Buenos+Aires+Argentina"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body text-sm text-background/40 hover:text-primary transition-colors duration-300 flex items-center gap-2 justify-center"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-              </svg>
-              Ciudad Autónoma de Buenos Aires — Ver en mapa
-            </a>
-            <p className="font-body text-[10px] text-background/20 mt-2">
-              Nueva dirección próximamente
-            </p>
-          </div>
-          {/* Decorative grid */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: "linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-            color: "white",
-          }} />
+          <iframe
+            src="https://maps.google.com/maps?q=-34.7971087,-58.1795255&z=15&output=embed"
+            width="100%"
+            height="320"
+            style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) grayscale(20%)" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Ubicación ACEROSCAS"
+          />
+          <a
+            href="https://maps.app.goo.gl/LMUym3N835iDwUqYA?g_st=iwb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-3 right-3 flex items-center gap-2 bg-foreground/80 backdrop-blur-sm border border-background/10 px-3 py-1.5 font-body text-xs text-background/60 hover:text-primary transition-colors duration-300"
+          >
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            Ver en Google Maps
+          </a>
         </motion.div>
 
         {/* Bottom bar */}
