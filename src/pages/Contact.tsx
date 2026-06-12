@@ -55,7 +55,7 @@ const Contact = () => {
                 
                 <h1 className="font-display font-800 text-5xl md:text-7xl lg:text-8xl leading-[0.92] tracking-tight text-foreground mb-12">
                   Hablemos de tu<br />
-                  <span className="text-primary">próximo</span> pedido<span className="text-primary">.</span>
+                  <span className="text-primary">próxima</span> cotización<span className="text-primary">.</span>
                 </h1>
 
                 <p className="font-body text-lg text-muted-foreground max-w-md mb-16 leading-relaxed">
@@ -64,28 +64,34 @@ const Contact = () => {
 
                 <div className="space-y-10">
                   <div>
-                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Ventas</p>
-                    <a href="mailto:franco@aceroscas.com.ar" className="font-display font-600 text-2xl hover:text-primary transition-colors">
+                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Ventas CABA</p>
+                    <a href="tel:+5491123192749" className="font-display font-600 text-xl hover:text-primary transition-colors block">
+                      +54 9 11 2319-2749
+                    </a>
+                    <a href="mailto:ventas@aceroscas.com.ar" className="font-display font-600 text-xl hover:text-primary transition-colors block mt-1">
+                      ventas@aceroscas.com.ar
+                    </a>
+                  </div>
+                  <div>
+                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Ventas Interior</p>
+                    <a href="https://wa.me/5491158392680" target="_blank" rel="noopener noreferrer" className="font-display font-600 text-xl hover:text-primary transition-colors block">
+                      +54 11 5839-2680
+                    </a>
+                    <a href="mailto:franco@aceroscas.com.ar" className="font-display font-600 text-xl hover:text-primary transition-colors block mt-1">
                       franco@aceroscas.com.ar
                     </a>
                   </div>
                   <div>
                     <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Info</p>
-                    <a href="mailto:info@aceroscas.com.ar" className="font-display font-600 text-2xl hover:text-primary transition-colors">
+                    <a href="mailto:info@aceroscas.com.ar" className="font-display font-600 text-xl hover:text-primary transition-colors">
                       info@aceroscas.com.ar
                     </a>
                   </div>
                   <div>
-                    <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">WhatsApp</p>
-                    <a href="https://wa.me/5491158392680" target="_blank" rel="noopener noreferrer" className="font-display font-600 text-2xl hover:text-primary transition-colors">
-                      +54 11 5839-2680
-                    </a>
-                  </div>
-                  <div>
                     <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground/40 mb-3">Ubicación</p>
-                    <p className="font-display font-600 text-2xl">
-                      Ciudad Autónoma<br />
-                      de Buenos Aires
+                    <p className="font-display font-600 text-xl">
+                      Provincia de<br />
+                      Buenos Aires
                     </p>
                   </div>
                 </div>

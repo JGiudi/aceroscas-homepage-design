@@ -10,9 +10,15 @@ const WhatsAppIcon = () => (
 
 const contactItems = [
   {
-    label: "Ventas",
-    value: "franco@aceroscas.com.ar",
-    sub: "Representante Comercial",
+    label: "Ventas CABA",
+    value: "+54 9 11 2319-2749\nventas@aceroscas.com.ar",
+    sub: "Ciudad Autónoma de Buenos Aires",
+    href: "mailto:ventas@aceroscas.com.ar",
+  },
+  {
+    label: "Ventas Interior",
+    value: "+54 11 5839-2680\nfranco@aceroscas.com.ar",
+    sub: "Interior del país",
     href: "mailto:franco@aceroscas.com.ar",
   },
   {
@@ -22,14 +28,8 @@ const contactItems = [
     href: "mailto:info@aceroscas.com.ar",
   },
   {
-    label: "WhatsApp",
-    value: "+54 11 5839-2680",
-    sub: "Cotizaciones rápidas",
-    href: "https://wa.me/5491158392680",
-  },
-  {
     label: "Ubicación",
-    value: "Ciudad Autónoma\nde Buenos Aires",
+    value: "Provincia de\nBuenos Aires",
     sub: "Ver en Google Maps",
     href: "https://maps.app.goo.gl/LMUym3N835iDwUqYA?g_st=iwb",
   },
@@ -85,7 +85,7 @@ const FooterSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <MagneticButton
-              href="mailto:franco@aceroscas.com.ar"
+              href="mailto:ventas@aceroscas.com.ar"
               className="inline-flex items-center gap-4 bg-primary text-primary-foreground font-body font-semibold text-base tracking-wide px-12 py-6 hover:brightness-110 transition-all duration-300 group relative overflow-hidden"
             >
               <span className="relative z-10">ESCRIBINOS</span>

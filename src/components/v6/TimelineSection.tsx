@@ -36,7 +36,7 @@ const timelineEvents = [
     year: "2025",
     title: "Logística propia en CABA",
     description:
-      "Adquirimos nuestro primer camión propio. Distribución directa dentro de Ciudad Autónoma de Buenos Aires; para el interior, red de distribución terciarizada que cubre cada rincón del país.",
+      "Adquirimos nuestro primer camión propio. Distribución directa dentro de Provincia de Buenos Aires; para el interior, red de distribución terciarizada que cubre cada rincón del país.",
   },
   {
     year: "2026",
